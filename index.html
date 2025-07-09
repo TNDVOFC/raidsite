@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de RAID 🔐</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/gh/KeyAuth/keyauth-js@main/keyauth.js"></script>
+</head>
+<body>
+  <!-- TOAST (mensagens animadas) -->
+  <div id="toast" class="toast"></div>
+
+  <!-- TELA DE LOGIN -->
+  <div id="telaLogin" class="tela">
+    <h1>🔐 Painel FHX TEAM</h1>
+    <input id="username" placeholder="Usuário" />
+    <input id="keyInput" placeholder="Key do KeyAuth" />
+    <button onclick="verificarKey()">Login</button>
+  </div>
+
+  <!-- TELA DE RAID -->
+  <div id="telaRaid" class="tela" style="display: none;">
+    <h2>💣 RAID CONTROL</h2>
+    <p><b>Usuário:</b> <span id="userInfo"></span></p>
+    <p><b>Dias restantes:</b> <span id="diasRestantes"></span></p>
+
+    <textarea id="mensagemRaid" placeholder="Mensagem de spam..."></textarea>
+    <input id="webhookRaid" placeholder="Webhook do Discord..." />
+    <input id="quantidadeRaid" type="number" placeholder="Quantidade" />
+    <button onclick="enviarRaid()">🔥 Enviar Spam</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
