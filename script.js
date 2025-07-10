@@ -1,4 +1,3 @@
-
 const KeyAuthApp = new KeyAuth({
   name: "PAINEL FHX TEAM",
   ownerid: "Ngs25UE5fj",
