@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Painel de RAID 🔐</title>
+  <title>Painel FHX TEAM - Raid Control</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/gh/KeyAuth/keyauth-js@main/keyauth.js"></script>
 </head>
 <body>
-  <!-- Toast animado -->
   <div id="toast" class="toast"></div>
 
   <!-- Tela de Login -->
   <div id="telaLogin" class="tela">
     <h1>🔐 Painel FHX TEAM</h1>
-    <input id="username" placeholder="Usuário" />
-    <input id="keyInput" placeholder="Key do KeyAuth" />
+    <input id="username" placeholder="Usuário" autocomplete="off" />
+    <input id="keyInput" placeholder="Key universal" autocomplete="off" />
     <button onclick="verificarKey()">Login</button>
+    <button id="btnGetKey" class="btn-discord" title="Clique para pegar key no Discord">
+      Get Key: discord.gg/xpXJkjDbmv
+    </button>
   </div>
 
   <!-- Tela do Raid -->
-  <div id="telaRaid" class="tela" style="display: none;">
+  <div id="telaRaid" class="tela" style="display:none;">
     <h2>💣 RAID CONTROL</h2>
-    <p><b>Usuário:</b> <span id="userInfo"></span></p>
-    <p><b>Dias restantes:</b> <span id="diasRestantes"></span></p>
+    <p><strong>Usuário:</strong> <span id="userInfo"></span></p>
+    <p><strong>Dias restantes:</strong> <span id="diasRestantes">Ilimitado</span></p>
 
-    <textarea id="mensagemRaid" placeholder="Mensagem de spam..."></textarea>
-    <input id="webhookRaid" placeholder="Webhook do Discord..." />
-    <input id="quantidadeRaid" type="number" placeholder="Quantidade" />
+    <p id="mensagemRaid" class="mensagem-raid">
+      @everyone By Tony_Dev Entrem: <a href="https://discord.gg/xpXJkjDbmv" target="_blank" rel="noopener noreferrer">https://discord.gg/xpXJkjDbmv</a>
+    </p>
+
+    <input id="webhookRaid" placeholder="Webhook do Discord..." autocomplete="off" />
+    <input id="quantidadeRaid" type="number" min="1" placeholder="Quantidade" />
     <button onclick="enviarRaid()">🔥 Enviar Spam</button>
   </div>
 
