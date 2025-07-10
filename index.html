@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Painel FHX TEAM - Raid Control</title>
+  <title>Painel MELI VZM - Raid Control</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,8 +11,8 @@
 
   <!-- Tela de Login -->
   <div id="telaLogin" class="tela">
-    <h1>🔐 Painel FHX TEAM</h1>
-    <input id="keyInput" placeholder="Key universal" autocomplete="off" />
+    <h1>🔐 Painel MELI VZM</h1>
+    <input id="keyInput" type="text" placeholder="Digite sua Key" autocomplete="off" />
     <button onclick="verificarKey()">Login</button>
     <button id="btnGetKey" class="btn-discord" title="Clique para pegar key no Discord">
       Get Key: discord.gg/xpXJkjDbmv
@@ -26,10 +26,10 @@
     <p><strong>Dias restantes:</strong> <span id="diasRestantes">Ilimitado</span></p>
 
     <p id="mensagemRaid" class="mensagem-raid">
-      @everyone By Tony_Dev Entrem: <a href="https://discord.gg/xpXJkjDbmv" target="_blank" rel="noopener noreferrer">https://discord.gg/xpXJkjDbmv</a>
+      @everyone By Tony_Dev Entrem: <a href="https://discord.gg/xpXJkjDbmv" target="_blank" rel="noopener noreferrer">discord.gg/xpXJkjDbmv</a>
     </p>
 
-    <input id="webhookRaid" placeholder="Webhook do Discord..." autocomplete="off" />
+    <input id="webhookRaid" type="url" placeholder="Webhook do Discord..." autocomplete="off" />
     <input id="quantidadeRaid" type="number" min="1" placeholder="Quantidade" />
     <button onclick="enviarRaid()">🔥 Enviar Spam</button>
   </div>
