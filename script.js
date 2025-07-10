@@ -9,24 +9,23 @@ function toast(mensagem, tempo = 3000) {
 }
 
 function verificarKey() {
-  const usuario = document.getElementById("username").value.trim();
   const key = document.getElementById("keyInput").value.trim();
 
-  if (!usuario || !key) return toast("❗ Preencha todos os campos.");
+  if (!key) return toast("❗ Preencha o campo da key.");
 
   if (key === KEY_UNIVERSAL) {
-    abrirRaid({ username: usuario, subscriptions: [{ expiry: 9999999999 }] });
+    abrirRaid(key);
     toast("✅ Login universal ativado!");
   } else {
     toast("❌ Key inválida.");
   }
 }
 
-function abrirRaid(info) {
+function abrirRaid(key) {
   document.getElementById("telaLogin").style.display = "none";
   document.getElementById("telaRaid").style.display = "block";
 
-  document.getElementById("userInfo").innerText = info.username || "Desconhecido";
+  document.getElementById("keyInfo").innerText = key;
   document.getElementById("diasRestantes").innerText = "Ilimitado";
 }
 
@@ -47,7 +46,6 @@ function enviarRaid() {
   toast("✅ Spam enviado!");
 }
 
-// Botão "Get Key" abre o Discord numa nova aba
 document.getElementById("btnGetKey").addEventListener("click", () => {
   window.open("https://discord.gg/xpXJkjDbmv", "_blank");
 });
