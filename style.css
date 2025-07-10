@@ -1,93 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle, #1f1f38, #111122);
-  color: white;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #eee;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 15px;
   overflow: hidden;
-  animation: fadeIn 1.2s ease-in-out;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  animation: fadeIn 1s ease forwards;
 }
 
 .tela {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 30px;
+  background: rgba(30, 30, 40, 0.85);
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
   text-align: center;
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
-  animation: popUp 0.6s ease;
+  animation: popUp 0.5s ease forwards;
 }
 
-input, textarea {
-  width: 90%;
-  padding: 12px;
-  margin: 10px 0;
+h1, h2 {
+  margin-bottom: 24px;
+  font-weight: 600;
+  color: #f9f9f9;
+  text-shadow: 0 0 8px #ff4d4d;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
-  font-size: 15px;
+  background: #1a1a2e;
+  color: #eee;
+  font-size: 16px;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: inset 0 0 6px #111;
+  font-family: 'Poppins', sans-serif;
   outline: none;
-  transition: 0.3s;
-  background: rgba(255,255,255,0.1);
-  color: white;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+input:focus {
+  background: #27293d;
+  box-shadow: 0 0 12px #ff4d4d;
 }
 
 textarea {
-  height: 80px;
-  resize: none;
+  min-height: 100px;
+  resize: vertical;
 }
 
 button {
+  cursor: pointer;
   background: #ff4d4d;
   color: white;
-  font-weight: bold;
-  padding: 12px 25px;
-  border-radius: 10px;
+  font-weight: 600;
   border: none;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 10px #ff4d4d80;
+  padding: 14px 0;
+  width: 100%;
+  border-radius: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 20px #ff4d4daa;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  margin-bottom: 12px;
 }
 
 button:hover {
-  background: #e60000;
+  background: #e13e3e;
   transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 .toast {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #202030;
-  color: white;
-  padding: 14px 20px;
-  border-radius: 10px;
+  background: #1a1a2ecc;
+  color: #fff;
+  padding: 16px 26px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(255, 77, 77, 0.9);
   opacity: 0;
   pointer-events: none;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  animation: slideIn 0.4s ease forwards;
+  font-weight: 600;
+  font-size: 14px;
+  user-select: none;
+  animation-fill-mode: forwards;
+  z-index: 9999;
 }
 
 .toast.show {
-  opacity: 1;
+  animation: slideIn 0.35s forwards, fadeOut 0.35s 2.5s forwards;
   pointer-events: auto;
 }
 
+/* Discord button */
+.btn-discord {
+  background: #5865F2;
+  box-shadow: 0 0 18px #5865F2aa;
+  font-weight: 700;
+  font-size: 15px;
+  user-select: none;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  margin-top: 6px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+}
+
+.btn-discord:hover {
+  background: #4752c4;
+  box-shadow: 0 0 26px #4752c4bb;
+}
+
+/* Mensagem fixa de raid */
+.mensagem-raid {
+  background: #2c2c44;
+  color: #ff5555;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  user-select: none;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.mensagem-raid a {
+  color: #ff7777;
+  text-decoration: underline;
+}
+
+.mensagem-raid a:hover {
+  color: #ffaaaa;
+}
+
+/* Animações */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 
 @keyframes popUp {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.85) }
+  to { opacity: 1; transform: scale(1) }
 }
 
 @keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from { opacity: 0; transform: translateX(100%) }
+  to { opacity: 1; transform: translateX(0) }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .tela {
+    padding: 20px 25px;
+    max-width: 100%;
+  }
 }
